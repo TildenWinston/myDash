@@ -17,5 +17,5 @@ urlpatterns = [
     path('', include('social_django.urls', namespace='social')),
     path('logout/', my_logout, name="logout"),
     path('login/', include('login.urls')),
-    path('logout/login/', include('login.urls')), #temporary workaround
+    path('logout/login/', include('login.urls')), #temporary workaround, TODO: fix redirect
 ]
