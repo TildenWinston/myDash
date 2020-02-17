@@ -39,7 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login',
+    'social_django', #for use with google logins
 ]
+
+
+#GOOGLE LOGIN CONFIGURATIONS
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '660169362401-7r7adu4374073j4r1rl92ecbj6sg6a8q.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'e-CX15blGyUt2k4vC7vj0nKb'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_REDIRECT_URL = '/toDoList/'
+LOGOUT_REDIRECT_URL = '/auth/login/google-oauth2/'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
