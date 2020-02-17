@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
+<<<<<<< HEAD
     url(r'^admin/', admin.site.urls),
     url(r'^gpa/', include('gpa.urls')),
 
+=======
+    path('admin/', admin.site.urls),
+    path('', include('todo.urls'))
+>>>>>>> 0c63365f3f5fda615486f69f4f6e318a76665bfc
 ]
