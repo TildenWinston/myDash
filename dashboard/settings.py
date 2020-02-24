@@ -32,33 +32,36 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "toDoList.apps.TodolistConfig",
+    "todo.apps.TodoConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
-    'social_django', #for use with google logins
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
+    'pages',
+    'users'
+    
 ]
 
-
-#GOOGLE+ OAUTH SETTINGS
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '660169362401-7r7adu4374073j4r1rl92ecbj6sg6a8q.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'e-CX15blGyUt2k4vC7vj0nKb'
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-
-LOGIN_URL = '/auth/login/google-oauth2/'
-LOGIN_REDIRECT_URL = '/toDoList/'
-LOGOUT_REDIRECT_URL = '/auth/login/google-oauth2/'
-
-
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +78,7 @@ ROOT_URLCONF = 'dashboard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS':[os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,6 +89,7 @@ TEMPLATES = [
             ],
         },
     },
+    
 ]
 
 WSGI_APPLICATION = 'dashboard.wsgi.application'
