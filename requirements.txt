@@ -12,24 +12,6 @@ cloudpickle==1.2.2
 cycler==0.10.0
 decorator==4.3.0
 defusedxml==0.5.0
-<<<<<<< HEAD
-dj-database-url==0.5.0
--e git+https://github.com/django/django.git@6f9ecc23f676e7a6f25d1a6cf830fe638a1eb589#egg=Django
-django-autoslug-iplweb==1.9.5
-django-dash==0.5.6
-django-heroku==0.3.1
-django-nine==0.2.3
-django-tinymce==2.8.0
-docopt==0.6.2
-easy-thumbnails==2.7
-entrypoints==0.3
-feedparser==5.2.1
-future==0.18.2
-gast==0.3.2
-google-pasta==0.1.8
-grpcio==1.25.0
-=======
->>>>>>> b25e7a179b3bf9e369a1bade45541d020335417b
 dj-database-url==0.5.0
 django-allauth==0.41.0
 django-autoslug-iplweb==1.9.5
@@ -95,26 +77,6 @@ pluggy==0.13.1
 prometheus-client==0.5.0
 prompt-toolkit==2.0.7
 protobuf==3.11.0
-<<<<<<< HEAD
-psycopg2==2.7.5
-psycopg2-binary==2.8.4
-ptyprocess==0.6.0
-py==1.8.0
-pydocstyle==4.0.1
-pyglet==1.3.2
-Pygments==2.3.1
-PyJWT==1.7.1
-pylint==2.3.1
-pyparsing==2.3.1
-pytest==5.3.1
-python-dateutil==2.7.5
-python3-openid==3.1.0
-pytz==2018.9
-PyYAML==5.1.2
-pyzmq==17.1.2
-qtconsole==4.4.3
-=======
->>>>>>> b25e7a179b3bf9e369a1bade45541d020335417b
 psycopg2==2.8.4
 psycopg2-binary==2.8.4
 ptyprocess==0.6.0
@@ -135,22 +97,13 @@ pyzmq==17.1.2
 qtconsole==4.4.3
 requests==2.22.0
 requests-oauthlib==1.3.0
-<<<<<<< HEAD
-=======
 rsa==4.0
->>>>>>> b25e7a179b3bf9e369a1bade45541d020335417b
 scikit-learn==0.20.2
 scipy==1.2.0
 Send2Trash==1.5.0
 Shapely==1.7.0
 six==1.12.0
 snowballstemmer==2.0.0
-<<<<<<< HEAD
-social-auth-app-django==3.1.0
-social-auth-core==3.2.0
-six==1.14.0
-=======
->>>>>>> b25e7a179b3bf9e369a1bade45541d020335417b
 sqlparse==0.3.0
 tensorboard==1.14.0
 tensorflow==1.14.0
@@ -164,24 +117,12 @@ transliterate==1.10.2
 typed-ast==1.3.1
 Unidecode==1.1.1
 urllib3==1.25.8
-<<<<<<< HEAD
-=======
 virtualenv==16.7.9
->>>>>>> b25e7a179b3bf9e369a1bade45541d020335417b
 vishap==0.1.5
 wcwidth==0.1.7
 webencodings==0.5.1
 Werkzeug==0.16.0
-<<<<<<< HEAD
 whitenoise==5.0.1
 widgetsnbextension==3.4.2
 wrapt==1.11.1
 zipp==0.6.0
-whitenoise==5.0.1
-wrapt==1.11.2
-=======
-whitenoise==5.0.1
-widgetsnbextension==3.4.2
-wrapt==1.11.1
-zipp==0.6.0
->>>>>>> b25e7a179b3bf9e369a1bade45541d020335417b
