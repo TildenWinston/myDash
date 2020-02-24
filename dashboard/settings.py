@@ -98,12 +98,24 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+if 'LIBRARY_PATH' in os.environ:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd3pa1qv3s19ic0',                      
+        'USER': 'yvgyinccncuxeo',
+        'PASSWORD': '1e45a7c303706e5f8288885a97d4dc44d09ae8494724baf2142d30decb5821c7',
+        'HOST': 'ec2-50-17-178-87.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
