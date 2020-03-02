@@ -6,11 +6,12 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     pass
-    email = models.EmailField(('email address'), unique=True)
+    
+    """ email = models.EmailField(('email address'), unique=True)
     is_active = models.BooleanField(default=True)
 
-    USERNAME_FIELD = 'email'
+    # USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.email
+        return self.email """
