@@ -6,11 +6,6 @@ from django.contrib.auth import logout
 from src.django.django.shortcuts import redirect
 
 
-def my_logout(request):
-    logout(request)
-    return redirect('login/')
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('todo.urls')),
