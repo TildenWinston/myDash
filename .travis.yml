@@ -13,4 +13,4 @@ deploy:
     secure: 
     app: dashboard-devs
     on: 
-      repo: 
+      repo: uva-cs3240-s20/project-103-dashboard-devs
