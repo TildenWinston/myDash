@@ -13,9 +13,9 @@ def my_logout(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('toDoList/', include('toDoList.urls')),
-    path('', include('social_django.urls', namespace='social')),
-    path('logout/', my_logout, name="logout"),
-    path('login/', include('login.urls')),
-    path('logout/login/', include('login.urls')), #temporary workaround, TODO: fix redirect
+    path('', include('todo.urls')),
+    path('', include('pages.urls')),
+    path('users/', include('users.urls')), 
+    path('users/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls'))
 ]
