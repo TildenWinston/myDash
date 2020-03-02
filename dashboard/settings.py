@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if 'LIBRARY_PATH' in os.environ:
+if os.environ.get('IS_HEROKU') == True:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
