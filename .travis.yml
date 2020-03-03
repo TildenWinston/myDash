@@ -5,13 +5,3 @@ install: # => 5
   - pip install -r requirements.txt
 script: # => 7
   - python manage.py test
-deploy:
-  provider: heroku:git
-  api_key:
-    secure: TurOFys3bkm5i3QxXFfB90iLR2rN5Jbu3iIUc497fJd9tjd/16Pp7cmV4bEC4sE5Cv/aMVLHr6nU4XPxGq0j54v/ciwwnuG9lWKWXxkUe
-lSRVXPgGJVrCpum34dTkhDJHbHPpNcdj9u6XXX/LKv7+2+JEjmZ4iUX0OtDFMu9gIKCOsA8mOQaqpDdSHRL1PTPa7vPa+nV3UU2Y5yEXhFMg8weQI+WkUL8++FS/eWFv6vtTAnORKM3xSPR1xSmLwXB7OXCo+K5YEUI+Czsc2mBlW2HnpYQ7j+NRdNHF5if+U+x8Qi9L/4wBrcfx6149qXNACwBCoqx7Hfga/oF6
-ARiOyI+BoxBaBIny7mSeBvZhdm9KtISV6CNQ9QkNuxVTgayUr3GCi+KNyFmdgtdisfSYlXs5n26BFwYzLQcJ5rtTk3ZzxoVPJgf0EWEYHyi7j62r31dK
-4xhHcQnAmbspkCpgv8y86BB2unGB2qfKl76dAEK2AEkFPqLN2bHkhFllitAqBlf1ofukUCZyLl76rZuZMCv9KhZuJnRkkqHigvf+JRsFoocBGLJwKwRbjcep0Ff+Io2eMHX8NGRgMULwZP1Y0BobtrPykd4O2R0ezx1qNcDYB9kmuXvJTRd0NZi3KD9AS/Qja1A1OvBC/MefL0T9frXJEl8ilH/+Kgf+HVWOg4=
-    app: dashboard-devs
-    on: 
-      repo: uva-cs3240-s20/project-103-dashboard-devs

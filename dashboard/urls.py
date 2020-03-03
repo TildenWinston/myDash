@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.contrib.auth import logout
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('todo.urls')),
