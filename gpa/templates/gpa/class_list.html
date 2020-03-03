@@ -19,22 +19,38 @@
 
 </nav>
 
-    <header class="container h-50">
+    <header class="container h-100">
         <div class="d-flex align-items-center justify-content-center h-100">
             <div class="d-flex flex-column">
                 <table style="width:100%">
                     <tr>
                         <th>Class Name</th>
+                        <th>Semester</th>
+                        <th>Year</th>
+                        <th>Grade Letter</th>
+                        <th>Numeric Grade</th>
                         <th>Grade</th>
                     </tr>
-                    {% for class in class_set.all %}
+                    {% for class in object_list.all %}
                     <tr>
                         <th>{{ class.name }}</th>
-                        <th>{{ class.numeric_grade }}</th>                        
+                        <th>{{ class.semester }}</th>   
+                        <th>{{ class.year }}</th>   
+                        <th>{{ class.grade }}</th>
+                        <th>{{ class.numeric_grade }}</th>
+                        <th>{{ class.credit_hours }}</th>
+                        <th>{{ class.id }} - <a href='{{ class.get_absolute_url }}'>{{ class.title }}</a> </th>
                     </tr>
                     {% endfor %}
                 </table>
-                <a class="btn btn-primary" href="/gpa/classes/">Add New Class</a>
+                <a class="btn btn-primary" href="/gpa/create/">Add New Class</a>
+                <div class="card">
+                  <div class="card-body">
+                    {% for grade in GPA %}
+                      <li>{{ grade.calc }}</li>
+                    {% endfor %}
+                  </div>
+                </div>
             </div>
         </div>
 
