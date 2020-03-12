@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests, json
 from .models import City, Zipcode
 from .forms import CityForm, ZipForm
+from . import views
 
 def index(request):
     url = 'http://api.openweathermap.org/data/2.5/forecast?zip={}&units=imperial&appid=16d8f8042bea161885dffd2d111fa5af'
@@ -10,7 +11,9 @@ def index(request):
 
     if request.method == 'POST':
         zipform = ZipForm(request.POST)
-        zipform.save()    
+        print(zipform)
+        zipform.save()
+        return redirect(views.index)    
 
     zipform = ZipForm()
 
@@ -19,7 +22,7 @@ def index(request):
     for zip in zips:
         # print(zip)
         city_weather = requests.get(url.format(zip)).json() #request the API data and convert the JSON to Python data types
-        print(json.dumps(city_weather, indent = 4, sort_keys=True))
+        # print(json.dumps(city_weather, indent = 4, sort_keys=True))
 
         weather = {
             'city' : zip,
