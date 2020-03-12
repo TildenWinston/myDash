@@ -25,12 +25,11 @@
                         {% csrf_token %}
                         <div class="field has-addons">
                             <div class="control is-expanded">
-
-                                {{ form.name }}
+                                {{ zipform.zip }}
                             </div>
                             <div class="control">
-                                <button class="button is-info">
-                                    Add City
+                                <button class="button is-info" name="zipcode">
+                                    Add Zip Code
                                 </button>
                             </div>
                         </div>

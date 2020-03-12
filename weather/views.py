@@ -1,33 +1,34 @@
 from django.shortcuts import render
 import requests, json
 from .models import City, Zipcode
-from .forms import CityForm
+from .forms import CityForm, ZipForm
 
 def index(request):
-    url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q={}&units=imperial&appid=16d8f8042bea161885dffd2d111fa5af'
-    cities = City.objects.all()
+    url = 'http://api.openweathermap.org/data/2.5/forecast?zip={}&units=imperial&appid=16d8f8042bea161885dffd2d111fa5af'
+    #cities = City.objects.all()
+    zips = Zipcode.objects.all()
 
     if request.method == 'POST':
-        form = CityForm(request.POST)
-        form.save()
+        zipform = ZipForm(request.POST)
+        zipform.save()    
 
-    form = CityForm()
+    zipform = ZipForm()
 
     weather_data = []
 
-    for city in cities:
-        # print(city)
-        city_weather = requests.get(url.format(city)).json() #request the API data and convert the JSON to Python data types
+    for zip in zips:
+        # print(zip)
+        city_weather = requests.get(url.format(zip)).json() #request the API data and convert the JSON to Python data types
         print(json.dumps(city_weather, indent = 4, sort_keys=True))
 
         weather = {
-            'city' : city,
-            'temperature' : city_weather['main']['temp'],
-            'description' : city_weather['weather'][0]['description'],
-            'icon' : city_weather['weather'][0]['icon']
+            'city' : zip,
+            'temperature' : city_weather['list'][0]['main']['temp'],
+            'description' : city_weather['list'][0]['weather'][0]['description'],
+            'icon' : city_weather['list'][0]['weather'][0]['icon']
         }
 
         weather_data.append(weather)
 
-    context = {'weather_data' : weather_data, 'form' : form}
+    context = {'weather_data' : weather_data, 'zipform' : zipform}
     return render(request, 'weather/index.html', context) #returns the index.html template
