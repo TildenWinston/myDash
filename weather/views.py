@@ -13,6 +13,7 @@ def index(request):
         zipform = ZipForm(request.POST)
         print(zipform)
         zipform.save()
+        request.user.Zipcode.add()
         return redirect(views.index)    
 
     zipform = ZipForm()

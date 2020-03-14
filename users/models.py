@@ -1,4 +1,5 @@
 from django.db import models
+from weather.models import Zipcode
 
 # Create your models here.
 
@@ -7,3 +8,4 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     pass
+    Zipcode
