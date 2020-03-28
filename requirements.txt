@@ -1,4 +1,4 @@
-
+virtualenv
 django
 gunicorn
 django-heroku
