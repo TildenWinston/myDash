@@ -12,10 +12,11 @@ def index(request):
     print(request.user)
 
     if request.method == 'POST':
+        print(request.POST)
         zipform = ZipForm(request.POST)
         # print(zipform)
         zipform.save()
-        request.user.Zipcode.add()
+        
         return redirect(views.index)    
 
     zipform = ZipForm()
