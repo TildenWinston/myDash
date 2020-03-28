@@ -1,5 +1,5 @@
 
-Django
+django
 gunicorn
 django-heroku
 django-allauth

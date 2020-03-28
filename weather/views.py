@@ -5,6 +5,7 @@ from .forms import CityForm, ZipForm
 from . import views
 
 def index(request):
+    # print(request)
     url = 'http://api.openweathermap.org/data/2.5/forecast?zip={}&units=imperial&appid=16d8f8042bea161885dffd2d111fa5af'
     #cities = City.objects.all()
     zips = Zipcode.objects.all()
