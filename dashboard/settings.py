@@ -46,13 +46,16 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'pages',
     'users', 
-    'main'
+    'main',
+    'social_django', 
     
 ]
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+      'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
 )
 
 SITE_ID = 1
@@ -72,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'dashboard.urls'
@@ -87,6 +91,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', 
+                'social_django.context_processors.login_redirect', 
             ],
         },
     },
@@ -151,7 +157,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+#Facebook API LOGIN OATH
+SOCIAL_AUTH_FACEBOOK_KEY = '259905795014698'      # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '2c511f8bf96aa396f45a16b3c0823467' # App Secret
 
+#Twitter API Login Oath
+SOCIAL_AUTH_TWITTER_KEY = 'URi9HvMcXFx5kyhUOHKZIaEaX'
+SOCIAL_AUTH_TWITTER_SECRET = 'v70G2LuSYT7092V4ZS9Uu6iaTZB9RXRLfSFsC9Hf2FS99VG2Y8'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
