@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'pages',
     'users', 
-    'main'
+    'main', 
+    'calendarApp',
     
 ]
 
