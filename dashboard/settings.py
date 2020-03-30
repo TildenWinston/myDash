@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -116,6 +116,8 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 if os.environ.get('IS_HEROKU') == True:
+    import django_heroku
+    django_heroku.settings(locals())
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -173,4 +175,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # Activate Django-Heroku.
-django_heroku.settings(locals())
