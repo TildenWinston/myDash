@@ -3,4 +3,5 @@ django
 gunicorn
 django-heroku
 django-allauth
-
+social-auth-app-django
+social-auth-core
