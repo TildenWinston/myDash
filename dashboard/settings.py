@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django.contrib.sites',
     'pages',
-    'users'
+    'users', 
+    'main'
+    
 ]
 
 
@@ -171,5 +173,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Activate Django-Heroku.
 django_heroku.settings(locals())
