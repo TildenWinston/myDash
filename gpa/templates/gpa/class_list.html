@@ -1,7 +1,6 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 
-
 <nav class="navbar navbar-expand-sm bg-light">
 
   <!-- Links -->
@@ -29,9 +28,9 @@
                         <th>Year</th>
                         <th>Grade Letter</th>
                         <th>Numeric Grade</th>
-                        <th>Grade</th>
+                        <th>Credit Hours</th>
                     </tr>
-                    {% for class in object_list.all %}
+                    {% for class in class_list %}
                     <tr>
                         <th>{{ class.name }}</th>
                         <th>{{ class.semester }}</th>   
@@ -39,17 +38,16 @@
                         <th>{{ class.grade }}</th>
                         <th>{{ class.numeric_grade }}</th>
                         <th>{{ class.credit_hours }}</th>
-                        <th>{{ class.id }} - <a href='{{ class.get_absolute_url }}'>{{ class.title }}</a> </th>
+                        <th><a href="/gpa/{{ class.id }}/update" class="btn btn-info" role="button">Edit</a> </th>
+                        <th><a href="/gpa/{{ class.id }}/delete" class="btn btn-info" role="button">Delete</a> </th>
                     </tr>
                     {% endfor %}
                 </table>
-                <a class="btn btn-primary" href="/gpa/create/">Add New Class</a>
                 <div class="card">
-                  <div class="card-body">
-                    {% for grade in GPA %}
-                      <li>{{ grade.calc }}</li>
-                    {% endfor %}
-                  </div>
+                  Current GPA: {{ grade }}
+                </div>
+                  <a class="btn btn-primary" href="/gpa/create/">Add a new class</a>
+                  <a class="btn btn-primary" href="/gpa/">Refresh GPA</a>
                 </div>
             </div>
         </div>

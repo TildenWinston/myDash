@@ -1,9 +1,6 @@
 from django.db import models
-from django.db.models import Sum
 from django.forms import ModelForm
 from django.urls import reverse
-
-# Create your models here.
 
 GRADE_CHOICES= [
     ('A+', 'A+'),
@@ -40,27 +37,16 @@ class Class(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("gpa:class-detail", kwargs={"id": self.id})
-
-    @classmethod
-    def cum_grades(self):
-        return Class.objects.aggregate(total=Sum('numeric_grade'))['total']*Class.objects.aggregate(total=Sum('credit_hours'))['total']
+        return reverse("gpa:class-list")
     
-    @classmethod
-    def cum_creds(cls):
-        return Class.objects.aggregate(total=Sum('credit_hours'))
+    @property
+    def grade_weight(self):
+        return self.credit_hours * self.numeric_grade
 
 class ClassForm(ModelForm):
     class Meta:
         model = Class
         fields = '__all__'
-
-class GPA(models.Model):
-    g = models.FloatField(default=0)
-    @property
-    def calc(self):
-        return Class.cum_grades()/Class.cum_creds()['total']
-    g = Class.cum_grades()/Class.cum_creds()['total']
 
 
 
