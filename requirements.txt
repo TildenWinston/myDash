@@ -5,5 +5,3 @@ django-heroku
 django-allauth
 social-auth-app-django
 social-auth-core
-dj-database-url 
-psycopg2

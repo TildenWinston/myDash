@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,14 +25,15 @@ SECRET_KEY = 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Application definition
 
 INSTALLED_APPS = [
     "todo.apps.TodoConfig",
+    'weather',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,8 +49,25 @@ INSTALLED_APPS = [
     'users', 
     'main',
     'social_django', 
-    
+
 ]
+
+
+#GOOGLE+ OAUTH SETTINGS
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '660169362401-7r7adu4374073j4r1rl92ecbj6sg6a8q.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'e-CX15blGyUt2k4vC7vj0nKb'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_REDIRECT_URL = '/toDoList/'
+LOGOUT_REDIRECT_URL = '/auth/login/google-oauth2/'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -106,6 +124,8 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 if os.environ.get('IS_HEROKU') == True:
+    import django_heroku
+    django_heroku.settings(locals())
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -173,4 +193,3 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Activate Django-Heroku.
-django_heroku.settings(locals())
