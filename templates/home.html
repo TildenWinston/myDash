@@ -1,135 +1,199 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<title>Login Page</title>
-	
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href=" {% static 'fonts/iconic/css/material-design-iconic-font.min.css'%}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %} ">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css'%}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-</head>
-<body>
 {% load socialaccount %}
-{% if user.is_authenticated %}
-<p>Welcome {{ user.username }} !!!</p>
-<p><a href="{% url 'account_logout' %}">Log out</a>
-{% else %}
-<body>
-	
-	<div class="limiter">
-		<div class="container-login100" >
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-49">
-						Login
-					</span>
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Type your username">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
+<!DOCTYPE html>
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
-					</div>
-					
-					<div class="text-right p-t-8 p-b-31">
-						<a href="#">
-							Forgot password?
-						</a>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button ref="{% url 'account_login' %}" class="login100-form-btn">
-								Login
-							</button>
-						</div>
-					</div>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>MyDash</title>
+   
+</head>
 
-					<div class="txt1 text-center p-t-54 p-b-20">
-						<span>
-							Or Sign Up Using
-						</span>
-					</div>
+<!-- CSS styling -->    
+<style>
+        a,
+        a:focus,
+        a:hover {
+          color: #fff;
+        }
+        
+        #learn:focus {
+            background-color: #02203c;
+        }
+        
+        /* Custom default button */
+        .btn-secondary,
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+          color: #333;
+          text-shadow: none; /* Prevent inheritance from `body` */
+          background-color: #fff;
+          border: .05rem solid #fff;
+        }
+        
+        
+        
+        /*
+         * Base structure
+         */
+         
+        html,
+        body {
+            height: 100%;
+            background-color: #02203c;
+            font-family: Helvetica;
+          }
+          
+          body {
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            -ms-flex-pack: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+          }
+        
+        h3 {
+            color: white;
+            margin-left: 40px;
+            text-align: center!important;
+        } 
+        
+        .text-center {
+            text-align: center!important;
+            color: white
+        }
+        .navbar-custom { 
+            background-color: #02203c; 
+            color :white
+        } 
+        .masthead {
+            margin-bottom: 2rem;
+          }
 
-					<div class="flex-c-m">
-						<a href="{% url 'social:begin' 'facebook' %}" class="login100-social-item bg1">
-							<i class="fa fa-facebook"></i>
-						</a>
+        
+        .cover-container {
+            max-width: 42em;
+        }
+        
+        /*
+        * Header
+        */
+        .masthead {
+            margin-bottom: 2rem;
+        }
+        
+        .masthead-brand {
+            margin-bottom: 0;
+        }
+        
+        .nav-masthead .nav-link {
+            padding: .25rem 0;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .5);
+            background-color: transparent;
+            border-bottom: .25rem solid transparent;
+        }
+        
+        .nav-masthead .nav-link:hover,
+        .nav-masthead .nav-link:focus {
+            border-bottom-color: rgba(255, 255, 255, .25);
+        }
+        
+        .nav-masthead .nav-link + .nav-link {
+            margin-left: 1rem;
+        }
+        
+        .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+        
+        @media (min-width: 48em) {
+            .masthead-brand {
+            float: left;
+            }
+            .nav-masthead {
+            float: right;
+            }
+        }
+        
+        /*
+        * Cover
+        */
+        .cover {
+            padding: 0 1.5rem;
+        }
+        .cover .btn-lg {
+            padding: .75rem 1.25rem;
+            font-weight: 700;
+        }
+        
+        /*
+        * Footer
+        */
+        .mastfoot {
+            color: rgba(255, 255, 255, .5);
+        }
+        
+</style>
 
-						<a href="{% url 'social:begin' 'twitter' %}"class="login100-social-item bg2">
-							<i class="fa fa-twitter"></i>
-						</a>
+<!-- End of CSS styling-->
+<body class="text-center">
+    <div class=" d-flex h-100 p-3 mx-auto flex-column">
+        <!-- Top page header -->
+        <header class="masthead mb-auto">
+                <div class="inner">
+                    <h3 class="masthead-brand">MyDash</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link active" href="{% url 'index' %}">Home</a>
+    
+                        {% if user.is_authenticated %}
+                
+                            <a class="nav-link" class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
+                            <a class="nav-link" >My Dashboard</a>
+    
+                        {% else %}
+                            <a class="nav-link" href="{% provider_login_url 'google' %}">Login</a>
+                            <!-- This logins via google and redirects to the redirect url in settings.py (this is user/create) -->
+                        {% endif %}
+                    </nav>
+                </div>
+        </header>
+        <!-- End of top page header -->
 
-						<a href="{% provider_login_url 'google' %}" class="login100-social-item bg3">
-							<i class="fa fa-google"></i>
-						</a>
-					</div>
+        <main role="main" class="inner cover">
+                <h1 class="cover-heading"><i> MyDash</i></h1>
+                <p class="lead">The ultimate personal dashboard. Everything you need to conquer your everyday.</p>
+                <p class="lead">
+                    <button type="button" class="btn btn-outline-light btn-lg">Learn More</button>
+                </p>
+        </main>
+    
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p ><i>Copyright &copy; Dashboard Devs 2020</i></p>
+            </div>
+        </footer>
+            
+    <!-- Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-					<div class="flex-col-c p-t-155">
-						<span class="txt1 p-b-17">
-							Don't have an account?
-						</span>
-						<a href="{% url 'account_signup' %}" class="txt2">
-							Sign Up
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
 
-	<div id="dropDownSelect1"></div>
-	
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js'%}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %} "></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
-	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/countdowntime/countdowntime.js'%}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'js/login.js' %}"></script>
-
+    </div>
+            
+   
 </body>
-{% endif %}
-</body>
-</html>
+
+
+
+

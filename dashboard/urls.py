@@ -7,7 +7,7 @@ from django.urls import path, include # Might be removable
 def my_logout(request):
     logout(request)
     return redirect('login/')
-
+app_name = 'mydash'
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('weather/', include('weather.urls')),
@@ -17,6 +17,6 @@ urlpatterns = [
     path('users/', include('users.urls')), 
     path('users/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
-    path('dashboard/', include("main.urls")),
+    path('dashboard', include("main.urls")),
     
 ]
