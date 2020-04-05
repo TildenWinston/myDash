@@ -137,7 +137,7 @@ if os.environ.get('IS_HEROKU') == True:
         'PORT': '5432',
         }
     }
-    django_heroku.settings(locals())
+    
 
 else:
     DATABASES = {
@@ -195,4 +195,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
 # Activate Django-Heroku.
+django_heroku.settings(locals())
