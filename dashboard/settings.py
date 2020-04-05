@@ -124,21 +124,21 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#if os.environ.get('IS_HEROKU') == True:
-import django_heroku
+if os.environ.get('IS_HEROKU') == True:
+    import django_heroku
 
-DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'd3pa1qv3s19ic0',                      
-    'USER': 'yvgyinccncuxeo',
-    'PASSWORD': '1e45a7c303706e5f8288885a97d4dc44d09ae8494724baf2142d30decb5821c7',
-    'HOST': 'ec2-50-17-178-87.compute-1.amazonaws.com',
-    'PORT': '5432',
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd3pa1qv3s19ic0',                      
+        'USER': 'yvgyinccncuxeo',
+        'PASSWORD': '1e45a7c303706e5f8288885a97d4dc44d09ae8494724baf2142d30decb5821c7',
+        'HOST': 'ec2-50-17-178-87.compute-1.amazonaws.com',
+        'PORT': '5432',
+        }
     }
-}
-django_heroku.settings(locals())
-"""
+    django_heroku.settings(locals())
+
 else:
     DATABASES = {
         'default': {
@@ -147,7 +147,7 @@ else:
         }
     }
 
-"""
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
