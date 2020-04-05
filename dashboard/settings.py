@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if os.environ.get('IS_HEROKU') == True:
+#if os.environ.get('IS_HEROKU') == True:
     import django_heroku
     DATABASES = {
     'default': {
@@ -137,7 +137,7 @@ if os.environ.get('IS_HEROKU') == True:
         }
     }
     django_heroku.settings(locals())
-
+"""
 else:
     DATABASES = {
         'default': {
@@ -146,7 +146,7 @@ else:
         }
     }
 
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
