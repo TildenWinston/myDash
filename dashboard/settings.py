@@ -126,7 +126,6 @@ WSGI_APPLICATION = 'dashboard.wsgi.application'
 
 if os.environ.get('IS_HEROKU') == True:
     import django_heroku
-    django_heroku.settings(locals())
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -135,8 +134,10 @@ if os.environ.get('IS_HEROKU') == True:
         'PASSWORD': '1e45a7c303706e5f8288885a97d4dc44d09ae8494724baf2142d30decb5821c7',
         'HOST': 'ec2-50-17-178-87.compute-1.amazonaws.com',
         'PORT': '5432',
+        }
     }
-}
+    django_heroku.settings(locals())
+
 else:
     DATABASES = {
         'default': {
