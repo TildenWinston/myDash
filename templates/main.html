@@ -38,7 +38,7 @@
     <header class="navbar-custom" class="masthead mb-auto">
         <div class=" d-flex h-100 p-3 mx-auto flex-column">
         <h3 style=" position: absolute; left: 75px; top: 25px;  color :white;" >MyDash</h3>
-                <a class="nav-link active" href="{% url 'index' %}" style=" position: absolute; right: 75px; top: 25px;">Home</a>
+                <a class="nav-link active" href="{% url 'home' %}" style=" position: absolute; right: 75px; top: 25px;">Home</a>
 
                 {% if user.is_authenticated %}
                     <a href="{% url 'account_logout' %}" style=" position: absolute; right: 75px; top: 25px;">Logout of {{ user.email }}</a>

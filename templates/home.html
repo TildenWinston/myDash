@@ -157,7 +157,7 @@
     
                         {% if user.is_authenticated %}
 							<a class="nav-link">My Dashboard</a>
-                            <a class="nav-link" class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
                            
     
                         {% else %}
@@ -171,10 +171,20 @@
 
         <main role="main" class="inner cover">
                 <h1 class="cover-heading"><i> MyDash</i></h1>
-                <p class="lead">The ultimate personal dashboard. Everything you need to conquer your everyday.</p>
-                <p class="lead">
-                    <button type="button" class="btn btn-outline-light btn-lg">Learn More</button>
-                </p>
+				<p class="lead">The ultimate personal dashboard. Everything you need to conquer your everyday.</p>
+				{% if user.is_authenticated %}
+					<p class="lead">
+						<button type="button" class="btn btn-outline-light btn-lg">Learn More</button>
+					</p>
+				{% else %}
+					<p class="lead">
+						<button type="button" class="btn btn-outline-light btn-lg">Learn More</button>
+					</p>
+					<p class="lead">
+						<button type="button" href="{% provider_login_url 'google' %}" class="btn btn-light btn-lg">Login</button>
+					</p>
+				{% endif %}
+                
         </main>
     
         <footer class="mastfoot mt-auto">
