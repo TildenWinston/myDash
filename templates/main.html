@@ -23,6 +23,7 @@
             color:black
         }
         .navbar-custom { 
+          height: 100%;
           background-color: #02203c; 
           color: #fff;
           text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
@@ -37,11 +38,11 @@
 
     <header class="navbar-custom" class="masthead mb-auto">
         <div class=" d-flex h-100 p-3 mx-auto flex-column">
-        <h3 style=" position: absolute; left: 75px; top: 25px;  color :white;" >MyDash</h3>
-                <a class="nav-link active" href="{% url 'home' %}" style=" position: absolute; right: 75px; top: 25px;">Home</a>
+        <h3 style=" position: absolute; left: 75px; top: 5px;  color :white;" >MyDash</h3>
+                <a class="nav-link active" href="{% url 'home' %}" style=" position: absolute; right: 75px; top: 4px;">Home</a>
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'account_logout' %}" style=" position: absolute; right: 75px; top: 25px;">Logout of {{ user.email }}</a>
+                    <a href="{% url 'account_logout' %}" style=" position: absolute; right: 200px; top: 10px;">Logout of {{ user.email }}</a>
 
                 {% else %}
                 <a style="color:aliceblue"  href="{% provider_login_url 'google' %}" style=" position: absolute; right: 85px; top: 25px;">Login</a>
@@ -87,7 +88,7 @@
       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
     </div>
     <div class="card-footer">
-      <a href="#" class="btn btn-primary btn-sm">More Info</a>
+      <a href="/todo" class="btn btn-primary btn-sm">More Info</a>
     </div>
   </div>
 </div>
