@@ -1,8 +1,7 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from django.http import Http404
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -45,17 +44,20 @@ class ClassCreateView(generic.CreateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-def class_index(request):
+def ClassList(request):
     total = 0
     creds = 0
     grade = 0
+    
     for c in Class.objects.all():
         total += c.grade_weight
         creds += c.credit_hours
         grade = total/creds
     grade = str(round(grade, 3))
+    
     context = {
         'grade': grade,
         'class_list': Class.objects.all(),
         }
+    
     return render(request, 'gpa/class_list.html', context)    
