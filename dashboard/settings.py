@@ -8,7 +8,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
+
+if os.environ.get('IS_HEROKU') == True:
+    import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -172,4 +174,5 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+if os.environ.get('IS_HEROKU') == True:
+    django_heroku.settings(locals())
