@@ -14,10 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if 'I_AM_HEROKU' in os.environ:
-    # Configure Django App for Heroku.
-    import django_heroku
-    django_heroku.settings(locals())
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -28,7 +25,7 @@ SECRET_KEY = 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dashboard-devs.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
