@@ -15,12 +15,12 @@ def index(request):
     print(request.user)
 
     if request.method == 'POST':
-        print(request.user)
-        print(request.POST['zip'])
+        #print(request.user)
+        #print(request.POST['zip'])
 
         model = Zipcode()
         model.zip = request.POST['zip']
-        print(model.zip)
+        #print(model.zip)
         model.zip = model.zip
         model.user = request.user
         model.save()
