@@ -168,8 +168,6 @@
                              <div class="cover">
                                 <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">
                              </div>
-                           
-                           
     
                         {% else %}
                             <a class="nav-link" href="{% provider_login_url 'google' %}">Login</a>
