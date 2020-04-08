@@ -1,0 +1,197 @@
+{% load static %}
+{% load socialaccount %}
+<!doctype html>
+<html lang="en">
+
+<!-- CSS styling -->    
+<style>
+        a,
+        a:focus,
+        a:hover {
+          color: #fff;
+        }
+        
+        #learn:focus {
+            background-color: #02203c;
+        }
+        
+        /* Custom default button */
+        .btn-secondary,
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+          color: #333;
+          text-shadow: none; /* Prevent inheritance from `body` */
+          background-color: #fff;
+          border: .05rem solid #fff;
+        }
+        
+        
+        
+        /*
+         * Base structure
+         */
+         
+        html,
+        body {
+            height: 100%;
+            background-color: #02203c;
+            font-family: Helvetica;
+          }
+          
+          body {
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            -ms-flex-pack: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+          }
+        
+        h3 {
+            color: white;
+            margin-left: 5px;
+            text-align: center!important;
+        } 
+        
+        .text-center {
+            text-align: center!important;
+            color: white
+        }
+        .navbar-custom { 
+            background-color: #02203c; 
+            color :white
+        } 
+        .masthead {
+            margin-bottom: 2rem;
+          }
+
+        
+        .cover-container {
+            max-width: 42em;
+        }
+        
+        /*
+        * Header
+        */
+        .masthead {
+            margin-bottom: 2rem;
+        }
+        
+        .masthead-brand {
+            margin-bottom: 0;
+        }
+        
+        .nav-masthead .nav-link {
+            padding: .25rem 0;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .5);
+            background-color: transparent;
+            border-bottom: .25rem solid transparent;
+        }
+        
+        .nav-masthead .nav-link:hover,
+        .nav-masthead .nav-link:focus {
+            border-bottom-color: rgba(255, 255, 255, .25);
+        }
+        
+        .nav-masthead .nav-link + .nav-link {
+            margin-left: 1rem;
+        }
+        
+        .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+        
+        @media (min-width: 20em) {
+            .masthead-brand {
+            float: left;
+            }
+            .nav-masthead {
+            float: right;
+            }
+        }
+        
+        /*
+        * Cover
+        */
+        .cover {
+            padding: 0 0rem;
+        }
+        .cover .btn-lg {
+            padding: .75rem 1.25rem;
+            font-weight: 700;
+        }
+        
+        /*
+        * Footer
+        */
+        .mastfoot {
+            color: rgba(255, 255, 255, .5);
+        }
+
+        .avatar {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+      }
+        
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Learn More</title>
+</head>
+
+
+
+<body class="text-center" style="background-color: #02203c;">
+        <div class=" d-flex h-100 p-3 mx-auto flex-column ">
+                <header class="masthead mb-auto">
+                        <div class="inner">
+                            <h3 class="masthead-brand"><a class="masthead-brand"href="/">MyDash</a></h3>
+                            <nav class="nav nav-masthead justify-content-center">
+                                <a class="nav-link active" href="/">Home</a>
+            
+                                {% if user.is_authenticated %}
+                                    <a class="nav-link" href="{% url 'home' %}">My Dashboard</a>
+                                    <a class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
+                                     <div class="cover">
+                                        <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">
+                                     </div>
+            
+                                {% else %}
+                                    <a class="nav-link" href="{% provider_login_url 'google' %}">Login</a>
+                                    <!-- This logins via google and redirects to the redirect url in settings.py (this is user/create) -->
+                                {% endif %}
+                            </nav>
+        
+                        </div>
+                </header>
+                <main role="main" class="inner cover">
+                        <div class="container" id="learn-container">
+                            <p id="learn-info">MyDash is a personal dashboard app desinged to help students reach their daily goals. It has a to-do list to help
+                                you tackle your goals, weather feature to keep you updated on your environment, gpa calculator, and calendar. </p>
+                        </div>
+                    </main>
+                    <footer class="mastfoot mt-auto">
+                            <div class="inner">
+                                <p ><i>Copyright &copy; Dashboard Devs 2020</i></p>
+                            </div>
+                        </footer>
+        </div>
+
+</body>

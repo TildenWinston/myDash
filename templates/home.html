@@ -62,7 +62,7 @@
         
         h3 {
             color: white;
-            margin-left: 40px;
+            margin-left: 5px;
             text-align: center!important;
         } 
         
@@ -116,7 +116,7 @@
             border-bottom-color: #fff;
         }
         
-        @media (min-width: 48em) {
+        @media (min-width: 20em) {
             .masthead-brand {
             float: left;
             }
@@ -129,7 +129,7 @@
         * Cover
         */
         .cover {
-            padding: 0 1.5rem;
+            padding: 0 0rem;
         }
         .cover .btn-lg {
             padding: .75rem 1.25rem;
@@ -184,14 +184,14 @@
 				<p class="lead">The ultimate personal dashboard. Everything you need to conquer your everyday.</p>
 				{% if user.is_authenticated %}
 					<p class="lead">
-						<button type="button" class="btn btn-outline-light btn-lg">Learn More</button>
+						<a type="button" href="/learn" class="btn btn-outline-light btn-lg">Learn More</a>
 					</p>
 				{% else %}
 					<p class="lead">
-						<button type="button" class="btn btn-outline-light btn-lg">Learn More</button>
+						<a type="button" href="/learn" class="btn btn-outline-light btn-lg">Learn More</a>
 					</p>
 					<p class="lead">
-						<button type="button" href="{% provider_login_url 'google' %}" class="btn btn-light btn-lg">Login</button>
+                        <a type="button" href="{% provider_login_url 'google' %}" class="btn btn-light btn-lg">Login</a>
 					</p>
 				{% endif %}
                 
