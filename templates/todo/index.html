@@ -9,14 +9,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>ToDo App</title>
 
-<head>
- <!-- Required meta tags -->
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- 
- <!-- Bootstrap CSS -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
+		 <!-- Required meta tags -->
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="icon" href="http://example.com/favicon.png">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{% static 'todo/bs/css/flatly.min.css' %}" />
 		<link rel="stylesheet" href="{% static 'todo/styles.css' %}" />
@@ -24,107 +23,102 @@
 
 	<!-- CSS start -->
 	<style>
-			body {
-				height: 100%;
-				background-color: #02203c;
-				font-family: Helvetica;
-			  }
-	</style>
+		body {
+			height: 100%;
+			background-color: #02203c;
+			font-family: Helvetica;
+			}
 
-
-
-	<!--CSS done-->
-	<body>
-
-
-<style>
-        body {
-            height: 100%;
-            background-color: white;
-            font-family: Helvetica;
-            color:black
-        }
-        .navbar-custom { 
-          height: 100%;
+		.navbar-custom { 
+       
           background-color: #02203c; 
           color: #fff;
           text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
           box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-      } 
-       
-</style>
+     	 } 
+      	.avatar {
+			vertical-align: middle;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+      	}
+	</style>
 
-
-
-<body>
-
-    <header class="navbar-custom" class="masthead mb-auto">
-        <div class=" d-flex h-100 p-3 mx-auto flex-column">
-        <h3 style=" position: absolute; left: 75px; top: 5px;  color :white;" >MyDash</h3>
-                <a class="nav-link active" href="{% url 'home' %}" style=" position: absolute; right: 75px; top: 4px;">Home</a>
-
-                {% if user.is_authenticated %}
-                    <a href="{% url 'account_logout' %}" style=" position: absolute; right: 200px; top: 10px;">Logout of {{ user.email }}</a>
-
-                {% else %}
-                <a style="color:aliceblue"  href="{% provider_login_url 'google' %}" style=" position: absolute; right: 85px; top: 25px;">Login</a>
-    
-                {% endif %}
-            </nav>
-        </div>
-</header>
-
-
-
-<!-- Page Content -->
-<div class="container">
-
-    <div class="container-fluid" id="wrapper">
-			
-        <div class="row">
-            <div class="col-lg-4 col-lg-offset-4" id="content">
-                <h2>WHAT DO YOU WANT TO DO TODAY?</h2>
-                
-                <form action="{% url 'add' %}" method="POST" role="form">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group">
-                          {{ form.text }}
-                          <span class="input-group-btn">
-                              <button type="submit" class="btn btn-default" id="add-btn">ADD</button>
-                          </span>
-                        </div>
-                    </div>
-                </form>
-
-                <div class="row t10">
-                    <div class="col-lg-12">
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <a href="{% url 'deletecomplete' %}"><button type="button" class="btn btn-warning">
-                                    <i class="glyphicon glyphicon-trash"></i> DELETE COMPLETED
-                                </button></a>
-                            </div>
-                            <div class="btn-group">
-                                <a href="{% url 'deleteall' %}"><button type="button" class="btn btn-warning">
-                                    <i class="glyphicon glyphicon-trash"></i> DELETE ALL
-                                </button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <ul class="list-group t20">
-                    {% for todo in todo_list %}
-                        {% if todo.complete %}
-                        <li class="list-group-item todo-completed">{{ todo.text }}</li>
+	<!--CSS done-->
+	 
+     <header class="navbar-custom navbar-expand-lg" class="masthead mb-auto">
+          <nav class="navbar  navbar-custom" >
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="/">MyDash</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/todo">Todo <span class="sr-only">(current)</span></a>
+                  </li>
+				<li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                  </li>
+                    {% if user.is_authenticated %}
+                          <a href="{% url 'account_logout' %}" class="nav-link" href="#">Logout of {{ user.email }}<span class="sr-only">(current)</span></a>
                         {% else %}
-                        <a href="{% url 'complete' todo.id %}"><li class="list-group-item">{{ todo.text }}</li></a>
+                        <a class="nav-link" href="{% provider_login_url 'google' %}">Login <span class="sr-only">(current)</span></a>
                         {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+            	</ul>
+                <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">
+              </div>
+            </nav>
+    </header>
+
+	<body>
+
+		<div class="container-fluid" id="wrapper">
+			
+			<div class="row">
+				<div class="col-lg-4 col-lg-offset-4" id="content">
+					<h2>WHAT DO YOU WANT TO DO TODAY?</h2>
+					
+					<form action="{% url 'add' %}" method="POST" role="form">
+						{% csrf_token %}
+						<div class="form-group">
+							<div class="input-group">
+							  {{ form.text }}
+							  <span class="input-group-btn">
+								  <button type="submit" class="btn btn-default" id="add-btn">ADD</button>
+							  </span>
+							</div>
+						</div>
+					</form>
+
+					<div class="row t10">
+						<div class="col-lg-12">
+							<div class="btn-toolbar">
+								<div class="btn-group">
+									<a href="{% url 'deletecomplete' %}"><button type="button" class="btn btn-warning">
+										<i class="glyphicon glyphicon-trash"></i> DELETE COMPLETED
+									</button></a>
+								</div>
+								<div class="btn-group">
+									<a href="{% url 'deleteall' %}"><button type="button" class="btn btn-warning">
+										<i class="glyphicon glyphicon-trash"></i> DELETE ALL
+									</button></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<ul class="list-group t20">
+						{% for todo in todo_list %}
+							{% if todo.complete %}
+							<li class="list-group-item todo-completed">{{ todo.text }}</li>
+							{% else %}
+							<a href="{% url 'complete' todo.id %}"><li class="list-group-item">{{ todo.text }}</li></a>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
 
 			<footer>
 				<div class="row pad">

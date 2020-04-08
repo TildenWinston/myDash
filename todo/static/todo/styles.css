@@ -1,6 +1,10 @@
 body {
-	background: rgba(44, 62, 80, .8);
-	font-family: 'Oswald', 'Futura', sans-serif;
+	
+
+	height: 100%;
+	background-color: #02203c;
+	font-family: Helvetica;
+
 }
 #wrapper {
 	margin-top: 10% !important;
