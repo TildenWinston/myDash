@@ -12,7 +12,7 @@ def my_logout(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('todo.urls')),
+    path('todo/', include('todo.urls')),
     path('weather/', include('weather.urls')),    
     path('', include('pages.urls')),
     path('users/', include('users.urls')), 
