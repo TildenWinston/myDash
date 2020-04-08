@@ -142,6 +142,13 @@
         .mastfoot {
             color: rgba(255, 255, 255, .5);
         }
+
+        .avatar {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+      }
         
 </style>
 
@@ -158,6 +165,10 @@
                         {% if user.is_authenticated %}
 							<a class="nav-link" href="/dashboard">My Dashboard</a>
                             <a class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
+                             <div class="cover">
+                                <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">
+                             </div>
+                           
                            
     
                         {% else %}
@@ -165,6 +176,7 @@
                             <!-- This logins via google and redirects to the redirect url in settings.py (this is user/create) -->
                         {% endif %}
                     </nav>
+
                 </div>
         </header>
         <!-- End of top page header -->
