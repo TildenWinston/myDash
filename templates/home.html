@@ -163,7 +163,7 @@
                         <a class="nav-link active" href="/">Home</a>
     
                         {% if user.is_authenticated %}
-							<a class="nav-link" href="/dashboard">My Dashboard</a>
+							<a class="nav-link" href="{% url 'home' %}">My Dashboard</a>
                             <a class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
                              <div class="cover">
                                 <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">

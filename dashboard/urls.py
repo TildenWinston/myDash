@@ -9,7 +9,7 @@ def my_logout(request):
     logout(request)
     return redirect('login/')
 
-
+app_name = 'dashboard'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include('todo.urls')),
@@ -18,6 +18,6 @@ urlpatterns = [
     path('users/', include('users.urls')), 
     path('users/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
-    path('dashboard/', include("main.urls")),
+    path('dashboard/', include("main.urls"), name='dashboard'),
     
 ]
