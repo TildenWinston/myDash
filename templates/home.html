@@ -156,7 +156,7 @@
                         <a class="nav-link active" href="{% url 'index' %}">Home</a>
     
                         {% if user.is_authenticated %}
-							<a class="nav-link">My Dashboard</a>
+							<a class="nav-link" href="{% url 'home' %}">My Dashboard</a>
                             <a class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
                            
     
