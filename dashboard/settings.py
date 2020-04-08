@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'main',
     'social_django', 
     'weather',
-    
+    'gpa.apps.GpaConfig',
+    'bootstrap4', # for gpa module
 ]
 
 AUTHENTICATION_BACKENDS = (
