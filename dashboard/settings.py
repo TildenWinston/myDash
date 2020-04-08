@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users', 
     'main',
     'social_django', 
+    'weather',
     
 ]
 
