@@ -40,7 +40,7 @@ def index(request):
         # zipform = ZipForm(request.POST)
         # print(zipform)
         # zipform.save()
-        return redirect(views.index)    
+        return redirect('weather:index')    
 
     zipform = ZipForm()
 

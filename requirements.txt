@@ -8,3 +8,4 @@ social-auth-core
 dj-database-url 
 psycopg2
 whitenoise
+django-bootstrap4
