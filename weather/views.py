@@ -11,15 +11,35 @@ def index(request):
     url = 'http://api.openweathermap.org/data/2.5/forecast?zip={}&units=imperial&appid=16d8f8042bea161885dffd2d111fa5af'
     #cities = City.objects.all()
     zips = Zipcode.objects.all()
-    print(zips[1].user)
+    # print(zips[1].user)
     print(request.user)
 
     if request.method == 'POST':
-        print(request.POST)
-        zipform = ZipForm(request.POST)
+        print(request.user)
+        print(request.POST['zip'])
+
+        model = Zipcode()
+        model.zip = request.POST['zip']
+        print(model.zip)
+        model.zip = model.zip
+        model.user = request.user
+        model.save()
+
+
+        # model.user = 'admin'
+        # model.save()
+
+        # data = Zipcode(user=request.user)
+        # print(data)
+        # zipform = ZipForm(request.POST, instance=data)
+        # #data.save()
+        # zipform
         # print(zipform)
-        zipform.save()
+        # zipform.save()
         
+        # zipform = ZipForm(request.POST)
+        # print(zipform)
+        # zipform.save()
         return redirect(views.index)    
 
     zipform = ZipForm()

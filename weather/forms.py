@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm, TextInput
 from .models import City, Zipcode
 
@@ -12,8 +13,8 @@ class CityForm(ModelForm):
 class ZipForm(ModelForm):
     class Meta:
         model = Zipcode
-        fields = ['zip']
+        fields = ['zip', 'user']
         widgets = {
             'zip': TextInput(attrs={'class' : 'input', 'placeholder' : 'Zip code'}),
-            #'user': TextInput(attrs={'class' : 'input', 'placeholder' : 'user'})
-        } #updates the input class to have the correct Bulma class and placeholder
+            'user': forms.HiddenInput()
+        } #updates the input class to have the correct Bulma class and placeholder 
