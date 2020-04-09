@@ -7,3 +7,6 @@ class HomePageView(TemplateView):
 
 class LearnMoreView(TemplateView):
     template_name = 'learnMore.html'
+
+
+
