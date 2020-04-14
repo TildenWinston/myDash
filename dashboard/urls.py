@@ -7,12 +7,12 @@ from dashboard import views
 
 def my_logout(request):
     logout(request)
-    return redirect('login/')
+    return redirect('')
 
 app_name = 'dashboard'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todo/', include('todo.urls')),
+    path('dashboard/', include('todo.urls'),name='dashboard'),
     path('weather/', include('weather.urls')),    
     path('', include('pages.urls')),
     path('users/', include('users.urls')), 
