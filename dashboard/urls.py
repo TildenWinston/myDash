@@ -12,14 +12,16 @@ def my_logout(request):
 app_name = 'dashboard'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', include('todo.urls'),name='dashboard'),
+    #path('dashboard/', include('todo.urls'),name='dashboard'),
+    path('todo/', include('main.urls')),
     path('weather/', include('weather.urls')),    
     path('', include('pages.urls')),
     path('users/', include('users.urls')), 
     path('users/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
-    path('dashboard/', include("main.urls"), name='dashboard'),
+    # path('dashboard/', include("main.urls"), name='dashboard'),
     path('gpa/', include('gpa.urls')),
+    path('todolist/', include('todo.urls')),
 
 
 ]

@@ -3,7 +3,15 @@
 {% block main %}
 <!-- Heading Row -->
 <div class="row align-items-center my-5">
-	
+  <div class="col-lg-5">
+		<h1 class="font-weight-light">To-Do</h1>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="{% url 'todoapp' %}" allowfullscreen></iframe>
+		</div>
+		<div>
+			<a class="btn btn-primary" href="{% url 'todo' %}" style="margin-top:5px">weather</a>
+		</div>
+	</div>
 <!-- /.col-lg-8 -->
 <div class="col-lg-5">
   <h1 class="font-weight-light">Weather App</h1>
