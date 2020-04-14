@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 body {
     background: white url("images/background.gif") no-repeat;
 }
 li a {
     color: green;
+=======
+body {
+    background: white url("images/background.gif") no-repeat;
+}
+li a {
+    color: green;
+>>>>>>> 122b803ea8dce60d9cc105925288e3f1c07fa08e
 }
