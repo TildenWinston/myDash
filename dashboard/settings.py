@@ -43,6 +43,7 @@ if 'TRAVIS' in os.environ:
         'social_django', 
         'weather',
         'gpa.apps.GpaConfig',
+        'todo',
         'bootstrap4', # for gpa module
     ]
 
