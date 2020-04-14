@@ -1,48 +1,27 @@
+{%extends "base.html"%}
+{% block title %}GPA Calculator{% endblock title %} 
+
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% load static %}
 <form method="post">{% csrf_token %}
 {% csrf_token %}
 
-
-<nav class="navbar navbar-expand-sm bg-light">
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
-    </li>
-  </ul>
-
-</nav>
-
-    <header class="container h-300">
-        <div class="d-flex align-items-center justify-content-center h-100">
+{% block main %}
+    <header id=gpaheader>
+        <h1>GPA Calculator</h1>
+    </header>
+        <div class="d-flex align-items-center justify-content-center">
             <div class="d-flex flex-column">
                 <form action="" method="post">
                     {% bootstrap_form form %}
+                    {% csrf_token %}
                     {% buttons %}
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button id = "gpabuttonsave" type="submit" class="btn btn-primary">Save</button>
                     {% endbuttons %}
                 </form>
                 <a class="btn btn-primary" href="/gpa/">See classes and GPA</a>
             </div>
         </div>
-                        <!-- Footer -->
-            <footer class="page-footer font-small blue pt-4" style="padding-top:88px!important;">
-                <!-- Copyright -->
-                <div class="footer-copyright text-center ">© 2020 Copyright:
-                    <a href="https://github.com/simonmli"> Simon Li</a>
-                </div>
-                <!-- Copyright -->
-            </footer>
-            <!-- Footer -->
-    </header>
 
-
+{% endblock main %}
