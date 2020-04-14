@@ -11,7 +11,7 @@ def index(request):
 
     context = {'todo_list' : todo_list, 'form' : form}
 
-    return render(request, 'todo/index.html', context)
+    return render(request, 'todo.html', context)
 
 @require_POST
 def addTodo(request):
@@ -21,21 +21,21 @@ def addTodo(request):
         new_todo = Todo(text=request.POST['text'])
         new_todo.save()
 
-    return redirect('index')
+    return redirect('todo')
 
 def completeTodo(request, todo_id):
     todo = Todo.objects.get(pk=todo_id)
     todo.complete = True
     todo.save()
 
-    return redirect('index')
+    return redirect('todo')
 
 def deleteCompleted(request):
     Todo.objects.filter(complete__exact=True).delete()
 
-    return redirect('index')
+    return redirect('todo')
 
 def deleteAll(request):
     Todo.objects.all().delete()
 
-    return redirect('index')
+    return redirect('todo')
