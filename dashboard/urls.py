@@ -18,13 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-<<<<<<< HEAD
     url(r'^admin/', admin.site.urls),
     url(r'^gpa/', include('gpa.urls')),
 ]
-=======
-    path('admin/', admin.site.urls),
-    path('', include('weather.urls')),
-    path('weather/', include('weather.urls')),
-]
->>>>>>> dev-tilden
