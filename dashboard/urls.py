@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """dashboard URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,8 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-=======
->>>>>>> 122b803ea8dce60d9cc105925288e3f1c07fa08e
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -30,10 +27,6 @@ def my_logout(request):
 
 app_name = 'dashboard'
 urlpatterns = [
-<<<<<<< HEAD
-    url(r'^admin/', admin.site.urls),
-    url(r'^gpa/', include('gpa.urls')),
-=======
     path('admin/', admin.site.urls),
     path('todo/', include('todo.urls')),
     path('weather/', include('weather.urls')),    
@@ -45,5 +38,4 @@ urlpatterns = [
     path('gpa/', include('gpa.urls')),
 
 
->>>>>>> 122b803ea8dce60d9cc105925288e3f1c07fa08e
 ]
