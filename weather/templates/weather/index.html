@@ -38,8 +38,17 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="btn-group" style="margin-left:auto; margin-right:0;">
+                            
+                                <a href="{% url 'weather:delete' zip=weather.city %}"><button type="button" class="btn btn-warning">
+                                        <i class="glyphicon glyphicon-trash"></i> DELETE
+                                    </button></a>
+                            
+                            </div>
                         </article>
+
                     </div>
+
                     </li>
                     {% endfor %}
                 </ul>

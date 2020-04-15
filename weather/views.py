@@ -66,6 +66,19 @@ def index(request):
     context = {'weather_data' : weather_data, 'zipform' : zipform}
     return render(request, 'weather/index.html', context) #returns the index.html template
 
+def delete(request, zip):
+    zips = Zipcode.objects.all()
+    print(zip)
+    Zipcode.objects.filter(zip=zip, user=request.user).delete()
+    return redirect('weather:index') 
+"""     for zipobj in zips:
+        if(zipobj.user == request.user):
+            if(zipobj.zip == zip):
+                print("Match")
+                Zipcode.objects.delete(zipobj) """
+    
+    
+
 
 @xframe_options_exempt
 def dashapp(request):
