@@ -42,6 +42,7 @@ if 'TRAVIS' in os.environ:
         'main',
         'social_django', 
         'weather',
+        'calendarApp.apps.CalendarappConfig',
         'gpa.apps.GpaConfig',
         'bootstrap4', # for gpa module
     ]
@@ -210,6 +211,7 @@ else:
         'main',
         'social_django', 
         'weather',
+        'calendarApp.apps.CalendarappConfig',
         'gpa.apps.GpaConfig',
         'bootstrap4', # for gpa module
     ]

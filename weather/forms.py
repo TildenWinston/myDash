@@ -15,6 +15,6 @@ class ZipForm(ModelForm):
         model = Zipcode
         fields = ['zip', 'user']
         widgets = {
-            'zip': TextInput(attrs={'class' : 'input', 'placeholder' : 'Zip code'}),
+            'zip': TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Enter Zipcode e.g. 22904'}),
             'user': forms.HiddenInput()
         } #updates the input class to have the correct Bulma class and placeholder 

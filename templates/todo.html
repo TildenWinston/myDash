@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block main %}
+<!-- Heading Row -->
+<div class="row align-items-center my-7">
+	<div class="col-lg-6">
+		<div class="row">
+			<div id="content">
+				<h2 style="color:white;">WHAT DO YOU WANT TO DO TODAY?</h2>
+
+				<form action="{% url 'add' %}" method="POST" role="form">
+					{% csrf_token %}
+					<div class="form-group">
+						<div class="input-group">
+							{{ form.text }}
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default" id="add-btn">ADD</button>
+							</span>
+						</div>
+					</div>
+				</form>
+
+				<div class="row t10">
+					<div class="col-lg-12">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<a href="{% url 'deletecomplete' %}"><button type="button" class="btn btn-warning">
+										<i class="glyphicon glyphicon-trash"></i> DELETE COMPLETED
+									</button></a>
+							</div>
+							<div class="btn-group">
+								<a href="{% url 'deleteall' %}"><button type="button" class="btn btn-warning">
+										<i class="glyphicon glyphicon-trash"></i> DELETE ALL
+									</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<ul class="list-group t20">
+					{% for todo in todo_list %}
+					{% if todo.complete %}
+					<li class="list-group-item todo-completed">{{ todo.text }}</li>
+					{% else %}
+					<a href="{% url 'complete' todo.id %}">
+						<li class="list-group-item">{{ todo.text }}</li>
+					</a>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.col-lg-8 -->
+	<div class="col-lg-5">
+		<h1 class="font-weight-light">Weather App</h1>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="{% url 'weather:dashapp' %}" allowfullscreen></iframe>
+		</div>
+		<div>
+			<a class="btn btn-primary" href="{% url 'weather:index' %}" style="margin-top:5px">weather</a>
+		</div>
+	</div>
+	<!-- /.col-md-4 -->
+
+	<!-- /.row -->
+
+	<!-- Call to Action Well -->
+<div  style="background-color: #02203c;" class="card text-white   my-5 py-4 text-center">
+	<div class="card-body">
+	  <p class="text-white m-0">Organize your life today! Get started with our to-do list and then check out our GPA Calculator or Calendar.</p>
+	</div>
+	</div>
+	
+	<!-- Content Row -->
+<div class="row align-items-center" >
+<!-- 		<div class="col-md-4 mb-5">
+	  <div class="card h-100">
+		<div class="card-body">
+		  <h2 class="card-title">To Do App</h2>
+		  <p class="card-text">What is there to be done?</p>
+		</div>
+		<div class="card-footer">
+		  <a href="/todo" class="btn btn-primary btn-sm">Open</a>
+		</div>
+	  </div>
+	</div> -->
+	<!-- /.col-md-4 -->
+	<div class="col-md-4 mb-5">
+	  <div class="card h-100">
+		<div class="card-body">
+		  <h2 class="card-title">GPA Calculator</h2>
+		  <p class="card-text">Stay on top of your grades.</p>
+		</div>
+		<div class="card-footer">
+		  <a href="/gpa" class="btn btn-primary btn-sm">Open</a>
+		</div>
+	  </div>
+	</div>
+	<!-- /.col-md-4 -->
+	<div class="col-md-4 mb-5">
+	  <div class="card h-100">
+		<div class="card-body">
+		  <h2 class="card-title">Calendar</h2>
+		  <p class="card-text">Use this calendar to plan ahead. </p>
+		</div>
+		<div class="card-footer">
+		  <a href="/dashboard/calendar" class="btn btn-primary btn-sm">Open</a>
+		</div>
+	  </div>
+	</div>
+	<!-- /.col-md-4 -->
+	
+	</div>
+	<!-- /.row -->
+<!-- /.container -->
+
+{% endblock main %}
