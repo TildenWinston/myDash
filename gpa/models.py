@@ -1,6 +1,13 @@
 from django.db import models
 from django.forms import ModelForm
 from django.urls import reverse
+import datetime
+
+year = datetime.datetime.today().year
+YEARS = [year - i for i in range(6)]
+YEAR_CHOICES = []
+for y in YEARS:
+    YEAR_CHOICES.append((y,y))
 
 GRADE_CHOICES= [
     ('A+', 'A+'),
@@ -27,7 +34,7 @@ SEMESTER_CHOICES= [
 
 class Class(models.Model):
     name = models.CharField(max_length=30)
-    year = models.IntegerField(default=0)
+    year = models.IntegerField(choices=YEAR_CHOICES)
     semester = models.CharField(default= " ", max_length=20, choices=SEMESTER_CHOICES)
     grade = models.CharField(default= " ", max_length=3, choices=GRADE_CHOICES)
     numeric_grade = models.FloatField(default=0)
