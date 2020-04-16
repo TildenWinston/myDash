@@ -53,6 +53,7 @@ def ClassList(request):
         total += c.grade_weight
         creds += c.credit_hours
         grade = total/creds
+    
     grade = str(round(grade, 3))
     
     context = {

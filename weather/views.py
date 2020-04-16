@@ -23,7 +23,7 @@ def index(request):
         model = Zipcode()
         model.zip = request.POST['zip']
         #print(model.zip)
-        model.zip = model.zip
+        #model.zip = model.zip
         model.user = request.user
         model.save()
 
@@ -52,14 +52,23 @@ def index(request):
         if(zip.user == request.user):
             print(zip)
             city_weather = requests.get(url.format(zip)).json() #request the API data and convert the JSON to Python data types
-            # print(json.dumps(city_weather, indent = 4, sort_keys=True))
+            print(json.dumps(city_weather, indent = 4, sort_keys=True))
 
-            weather = {
-                'city' : zip,
-                'temperature' : city_weather['list'][0]['main']['temp'],
-                'description' : city_weather['list'][0]['weather'][0]['description'],
-                'icon' : city_weather['list'][0]['weather'][0]['icon']
-            }
+            if (city_weather["cod"] == "200"):
+                weather = {
+                    'city' : zip,
+                    'temperature' : city_weather['list'][0]['main']['temp'],
+                    'description' : city_weather['list'][0]['weather'][0]['description'],
+                    'icon' : city_weather['list'][0]['weather'][0]['icon']
+                }
+            
+            else:
+                weather = {
+                    'city' : zip,
+                    'temperature' : 404,
+                    'description' : "Bad Zipcode, delete and try again with a valid zipcode.",
+                }
+
 
             weather_data.append(weather)
 
@@ -95,12 +104,21 @@ def dashapp(request):
             city_weather = requests.get(url.format(zip)).json() #request the API data and convert the JSON to Python data types
             # print(json.dumps(city_weather, indent = 4, sort_keys=True))
 
-            weather = {
-                'city' : zip,
-                'temperature' : city_weather['list'][0]['main']['temp'],
-                'description' : city_weather['list'][0]['weather'][0]['description'],
-                'icon' : city_weather['list'][0]['weather'][0]['icon']
-            }
+            if (city_weather["cod"] == "200"):
+                weather = {
+                    'city' : zip,
+                    'temperature' : city_weather['list'][0]['main']['temp'],
+                    'description' : city_weather['list'][0]['weather'][0]['description'],
+                    'icon' : city_weather['list'][0]['weather'][0]['icon']
+                }
+            
+            else:
+                weather = {
+                    'city' : zip,
+                    'temperature' : 404,
+                    'description' : "Bad Zipcode, delete and try again with a valid zipcode.",
+                }
+
 
             weather_data.append(weather)
 
