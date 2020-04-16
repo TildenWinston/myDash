@@ -2,9 +2,10 @@ from django.db import models
 from django.forms import ModelForm
 from django.urls import reverse
 import datetime
+from django.core.validators import MaxValueValidator, MinValueValidator 
 
 year = datetime.datetime.today().year
-YEARS = [year - i for i in range(6)]
+YEARS = [year - i for i in range(8)]
 YEAR_CHOICES = []
 for y in YEARS:
     YEAR_CHOICES.append((y,y))
@@ -38,7 +39,7 @@ class Class(models.Model):
     semester = models.CharField(default= " ", max_length=20, choices=SEMESTER_CHOICES)
     grade = models.CharField(default= " ", max_length=3, choices=GRADE_CHOICES)
     numeric_grade = models.FloatField(default=0)
-    credit_hours = models.FloatField(default=0)
+    credit_hours = models.FloatField(default=0, validators=[MinValueValidator(0.01)])
 
     def __str__(self):
         return self.name
