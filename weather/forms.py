@@ -18,3 +18,10 @@ class ZipForm(ModelForm):
             'zip': TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Enter Zipcode e.g. 22904'}),
             'user': forms.HiddenInput()
         } #updates the input class to have the correct Bulma class and placeholder 
+
+    def validate(self, value):
+        """Check if value consists only of valid emails."""
+        # Use the parent's handling of required fields, etc.
+        super().validate(value)
+        for email in value:
+            validate_email(email)
