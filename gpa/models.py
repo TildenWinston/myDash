@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django.urls import reverse
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator 
+from django.contrib.auth import get_user_model
 
 year = datetime.datetime.today().year
 YEARS = [year - i for i in range(8)]
@@ -34,6 +35,7 @@ SEMESTER_CHOICES= [
     ]
 
 class Class(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=30)
     year = models.IntegerField(choices=YEAR_CHOICES)
     semester = models.CharField(default= " ", max_length=20, choices=SEMESTER_CHOICES)
