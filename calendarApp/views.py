@@ -56,6 +56,7 @@ def event(request, event_id=None):
 
     form = EventForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
+        model.user = request.user
         form.save()
         return HttpResponseRedirect(reverse('calendarApp:calendar'))
     
