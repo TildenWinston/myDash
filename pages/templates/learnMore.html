@@ -1,0 +1,57 @@
+{% load static %}
+{% load socialaccount %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Learn More</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+</head>
+
+<body class="text-center" style="background-color: #02203c;">
+        <div class=" d-flex h-100 p-3 mx-auto flex-column ">
+                <header class="masthead mb-auto">
+                        <div class="inner">
+                            <h3 class="masthead-brand"><a class="masthead-brand"href="/">MyDash</a></h3>
+                            <nav class="nav nav-masthead justify-content-center">
+                                <a class="nav-link active" href="/">Home</a>
+            
+                                {% if user.is_authenticated %}
+                                    <a class="nav-link" href="{% url 'home' %}">My Dashboard</a>
+                                    <a class="nav-link" href="{% url 'logout' %}">Logout of {{ user.email }}</a>
+                                     <div class="cover">
+                                        <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">
+                                     </div>
+            
+                                {% else %}
+                                    <a class="nav-link" href="{% provider_login_url 'google' %}">Login</a>
+                                    <!-- This logins via google and redirects to the redirect url in settings.py (this is user/create) -->
+                                {% endif %}
+                            </nav>
+        
+                        </div>
+                </header>
+                <main role="main" class="inner cover">
+                        <div class="container" id="learn-container">
+                            <p id="learn-info">MyDash is a personal dashboard app desinged to help students reach their daily goals. It has a to-do list to help
+                                you tackle your goals, weather feature to keep you updated on your environment, gpa calculator, and calendar. </p>
+                        </div>
+                    </main>
+                    <footer class="mastfoot mt-auto">
+                            <div class="inner">
+                                <p ><i>Copyright &copy; Dashboard Devs 2020</i></p>
+                            </div>
+                        </footer>
+        </div>
+
+</body>

@@ -2,15 +2,24 @@
 
 {% block main %}
 <!-- Heading Row -->
+
+<style>
+div.ex1 {
+	width: 400px;
+  height: 175px;
+  overflow: scroll;
+	
+}
+</style>
 <div class="row align-items-center my-7">
 	<div class="col-lg-6">
 		<div class="row">
-			<div id="content">
+			<div id="content" >
 				<h2 style="color:white;">WHAT DO YOU WANT TO DO TODAY?</h2>
 
 				<form action="{% url 'add' %}" method="POST" role="form">
 					{% csrf_token %}
-					<div class="form-group">
+					<div class="form-group" class="ex1">
 						<div class="input-group">
 							{{ form.text }}
 							<span class="input-group-btn">
@@ -36,6 +45,7 @@
 						</div>
 					</div>
 				</div>
+			<div class="ex1">
 
 				<ul class="list-group t20">
 					{% for todo in todo_list %}
@@ -47,6 +57,7 @@
 					</a>
 					{% endif %}
 					{% endfor %}
+					</div>
 				</ul>
 			</div>
 		</div>
