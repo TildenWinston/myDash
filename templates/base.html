@@ -113,7 +113,7 @@ div.ex1 {
                         <a href="{% url 'logout' %}"class="nav-link" href="/home">Logout of {{ user.email }}<span class="sr-only">(current)</span></a></li>
                     {% else %}
                     <li>
-                    <a  class="nav-link" href="{% provider_login_url 'google' %}"  >Login <span class="sr-only">(current)</span></a></li>
+                    <a  class="nav-link" href="{% provider_login_url 'google' %}">Login <span class="sr-only">(current)</span></a></li>
                     {% endif %}
                       
                 </ul>
