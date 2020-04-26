@@ -81,6 +81,8 @@ table, th, td {
 div.ex1 {
   overflow: scroll;
 }
+
+
 			
 	</style>
 	<!--CSS done-->
@@ -109,9 +111,10 @@ div.ex1 {
                     {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'logout' %}"class="nav-link" href="/home">Logout of {{ user.email }}<span class="sr-only">(current)</span></a></li>
-                        {% else %}
-                        <a class="nav-link" href="{% provider_login_url 'google' %}">Login <span class="sr-only">(current)</span></a></li>
-                        {% endif %}
+                    {% else %}
+                    <li>
+                    <a  class="nav-link" href="{% provider_login_url 'google' %}"  >Login <span class="sr-only">(current)</span></a></li>
+                    {% endif %}
                       
                 </ul>
                 {% if user.is_authenticated %}
