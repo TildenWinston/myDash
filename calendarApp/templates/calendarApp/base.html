@@ -1,4 +1,5 @@
 {% load static %}
+{%load socialaccount %}
 <!doctype html>
 <html lang="en">
 
@@ -101,11 +102,43 @@
 }
 
   </style>
-
-
+<header class="navbar-custom navbar-expand-lg" class="masthead mb-auto">
+    <nav class="navbar  navbar-custom" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="/">MyDash</a>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            
+  <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+              <a class="nav-link" href="/gpa">GPA <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+    <a class="nav-link" href="/weather">Weather<span class="sr-only">(current)</span></a>
+  </li>
+    <li class="nav-item active">
+              <a class="nav-link" href="/dashboard/calendar">Calendar <span class="sr-only">(current)</span></a>
+            </li>
+    {% if user.is_authenticated %}
+    <li>
+      <a href="{% url 'logout' %}"class="nav-link" href="/home">Logout of {{ user.email }}<span class="sr-only">(current)</span></a></li>
+      {% else %}
+      <a class="nav-link" href="{% provider_login_url 'google' %}">Login <span class="sr-only">(current)</span></a></li>
+      {% endif %}
+        </ul>
+          <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Avatar" class="avatar">
+        </div>
+      </nav>
+</header>
   <title>Calendar</title>
 </head>
+
 <body>
+
 
   {% block content %}
   {% endblock %}
@@ -121,5 +154,6 @@
 
   {% block script %}
   {% endblock %}
+  
 </body>
 </html>
