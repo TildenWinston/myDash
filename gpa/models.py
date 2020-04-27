@@ -40,7 +40,7 @@ class Class(models.Model):
     year = models.IntegerField(choices=YEAR_CHOICES)
     semester = models.CharField(default= " ", max_length=20, choices=SEMESTER_CHOICES)
     grade = models.CharField(default= " ", max_length=3, choices=GRADE_CHOICES)
-    numeric_grade = models.FloatField(default=0)
+    numeric_grade = models.FloatField(default=0.0)
     credit_hours = models.FloatField(default=0, validators=[MinValueValidator(0.01)])
 
     def __str__(self):

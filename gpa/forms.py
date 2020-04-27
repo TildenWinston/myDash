@@ -13,3 +13,6 @@ class ClassModelForm(forms.ModelForm):
             'numeric_grade',
             'credit_hours',
         ]
+        labels= {
+            "numeric_grade" : "Course GPA (0.0 - 4.0)",
+        }
