@@ -43,7 +43,7 @@ body {
 	height: 100%;
 	background-color: white;
 	font-family: Helvetica;
-
+  position: relative;
 }
 #content {
 	background: #02203c;
@@ -52,6 +52,8 @@ body {
 footer{
   background-color: #02203c; 
   color: #fff;
+  position: absolute;
+  width: 100%;
 }
 
 table, th, td {
@@ -78,6 +80,11 @@ table, th, td {
   display: flex;
   justify-content: center;
 }
+div.ex1 {
+  overflow: scroll;
+}
+
+
 			
 	</style>
 	<!--CSS done-->
@@ -105,10 +112,11 @@ table, th, td {
                   </li>
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'logout' %}"class="nav-link" href="/home">Logout of {{ user.email }}<span class="sr-only">(current)</span></a></li>
-                        {% else %}
-                        <a class="nav-link" href="{% provider_login_url 'google' %}">Login <span class="sr-only">(current)</span></a></li>
-                        {% endif %}
+                        <a href="{% url 'logout' %}?next=/"class="nav-link" >Logout of {{ user.email }}<span class="sr-only">(current)</span></a></li>
+                    {% else %}
+                    <li>
+                    <a  class="nav-link" href="{% provider_login_url 'google' %}">Login <span class="sr-only">(current)</span></a></li>
+                    {% endif %}
                       
                 </ul>
                 {% if user.is_authenticated %}
@@ -132,8 +140,7 @@ table, th, td {
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3"><i>Dashaboard Devs © 2020 Copyright</i>
-
-    </div>
+</div>
     <!-- Copyright -->
   
   </footer>
