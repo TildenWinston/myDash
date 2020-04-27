@@ -5,7 +5,7 @@ from .forms import CityForm, ZipForm
 from . import views
 from django.views.decorators.clickjacking import xframe_options_exempt
 
-
+# https://www.digitalocean.com/community/tutorials/how-to-build-a-weather-app-in-django#creating-the-form
 
 
 def index(request):
