@@ -41,15 +41,25 @@ class ClassCreateView(generic.CreateView):
     queryset = Class.objects.all() 
 
     def form_valid(self, form):
-        print(form.cleaned_data)
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 def ClassList(request):
+    classes = Class.objects.order_by('id')
+
+    user_class_list = []
+
+    for c in classes:
+        if(c.user == request.user):
+            user_class_list.append(c)
+
+    form = ClassModelForm()
+
     total = 0
     creds = 0
     grade = 0
     
-    for c in Class.objects.all():
+    for c in user_class_list:
         total += c.grade_weight
         creds += c.credit_hours
         grade = total/creds
@@ -58,7 +68,7 @@ def ClassList(request):
     
     context = {
         'grade': grade,
-        'class_list': Class.objects.all(),
+        'class_list': user_class_list,
         }
     
     return render(request, 'gpa/class_list.html', context)    

@@ -1,11 +1,16 @@
-{%extends "baseapp.html"%}
+{%extends "base.html"%}
 
 {% block title %}Weather{% endblock title %} 
 
 {% block main %}
+<style>
+    #content {
+            
+        }
+</style>
         <div class="row">
-            <div class="col-lg-4 col-lg-offset-4" id="content">
-                <h2>What's the weather like?</h2>
+            <div class="col-lg-8 col-lg-offset-2" id="content">
+                <h2 style="color:white">What's the weather like?</h2>
                 
                 <form method="POST" role="form">
                     {% csrf_token %}

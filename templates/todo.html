@@ -2,15 +2,24 @@
 
 {% block main %}
 <!-- Heading Row -->
+
+<style>
+div.ex1 {
+	width: 400px;
+  height: 175px;
+  overflow: scroll;
+	
+}
+</style>
 <div class="row align-items-center my-7">
 	<div class="col-lg-6">
 		<div class="row">
-			<div id="content">
+			<div id="content" >
 				<h2 style="color:white;">WHAT DO YOU WANT TO DO TODAY?</h2>
 
 				<form action="{% url 'add' %}" method="POST" role="form">
 					{% csrf_token %}
-					<div class="form-group">
+					<div class="form-group" class="ex1">
 						<div class="input-group">
 							{{ form.text }}
 							<span class="input-group-btn">
@@ -29,13 +38,14 @@
 									</button></a>
 							</div>
 							<div class="btn-group">
-								<a href="{% url 'deleteall' %}"><button type="button" class="btn btn-warning">
+								<a href="{% url 'deleteall' %}"><button style="padding: 10px 38px;" type="button" class="btn btn-warning">
 										<i class="glyphicon glyphicon-trash"></i> DELETE ALL
 									</button></a>
 							</div>
 						</div>
 					</div>
 				</div>
+			<div class="ex1">
 
 				<ul class="list-group t20">
 					{% for todo in todo_list %}
@@ -47,6 +57,7 @@
 					</a>
 					{% endif %}
 					{% endfor %}
+					</div>
 				</ul>
 			</div>
 		</div>
@@ -67,7 +78,7 @@
 	<!-- /.row -->
 
 	<!-- Call to Action Well -->
-<div  style="background-color: #02203c; width:100%" class="card text-white   my-5 py-4 text-center">
+<div  style="background-color: #02203c; width:97.5%" class="card text-white   my-5 py-4 text-center">
 	<div class="card-body">
 	  <p class="text-white m-0">Organize your life today! Get started with our to-do list and then check out our GPA Calculator or Calendar.</p>
 	</div>
@@ -113,6 +124,7 @@
 	</div>
 	<!-- /.col-md-4 -->
 	
+	</div>
 	</div>
 	<!-- /.row -->
 <!-- /.container -->
