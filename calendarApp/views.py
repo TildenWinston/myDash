@@ -6,9 +6,13 @@ from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
+from django.http import HttpResponseRedirect
+
 from .models import *
 from .utils import Calendar
 from .forms import EventForm
+
+# https://www.huiwenteo.com/normal/2018/07/24/django-calendar.html
 
 def index(request):
     return HttpResponse('Test')
@@ -21,12 +25,19 @@ class CalendarView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
-        cal = Calendar(d.year, d.month)
+        user = self.request.user
+        cal = Calendar(d.year, d.month, user)
         html_cal = cal.formatmonth(withyear=True)
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
+
+        # Event.objects
+        # context['event_list'] = Event(user = self.request.user)
+        # print(self.request.user)
         return context
+
+
 
 def get_date(req_month):
     if req_month:
@@ -56,7 +67,14 @@ def event(request, event_id=None):
 
     form = EventForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
-        form.save()
+        model = Event()
+        model.user = request.user
+        model.title = request.POST['title']
+        model.description = request.POST['description']
+        model.start_time = request.POST['start_time']
+        model.end_time = request.POST['end_time']
+
+        model.save() 
         return HttpResponseRedirect(reverse('calendarApp:calendar'))
     
     return render(request, 'calendarApp/event.html', {'form': form})
