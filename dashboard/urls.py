@@ -16,8 +16,8 @@ urlpatterns = [
     #path('dashboard/', include('todo.urls'),name='dashboard'),
     #path('todo/', include('main.urls')),
 
-    path('dashboard/', include('main.urls'),name='dashboard'),
-    path('todo/',  include('todo.urls') ),
+    path('dashboard/', include('main.urls'), name='dashboard'),
+    path('todo/',  include('todo.urls'), name='todo'),
 
     path('weather/', include('weather.urls')),    
     path('', include('pages.urls')),
@@ -26,12 +26,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('dashboard/', include("main.urls")),
     path('calendarApp/', include("calendarApp.urls"), name = 'calendarApp'),
-    path('dashboard/', include("main.urls"), name='dashboard'),
-    path('gpa/', include('gpa.urls')),
   
     # path('dashboard/', include("main.urls"), name='dashboard'),
     path('gpa/', include('gpa.urls')),
-    path('todolist/', include('todo.urls')),
 
 
 ]
