@@ -22,7 +22,7 @@ def index(request):
 
     context = {'todo_list' : user_todo_list, 'form' : form}
 
-    return render(request, 'todo.html', context)
+    return render(request, 'todo/todo.html', context)
 
 @xframe_options_exempt
 def todoapp(request):
