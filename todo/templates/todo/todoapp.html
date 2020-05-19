@@ -44,7 +44,7 @@
       	}
 		div.ex1 {
 		
-		height: 130px;
+		height: 175px;
 		overflow: auto;
 
 		}
@@ -53,7 +53,8 @@
 	<!--CSS done-->
 
 	<body>
-				<!-- <div class="col-lg-4 col-lg-offset-4" id="content"> -->
+				
+					<div class="col-lg-12">
 					<h4 style="color: #fff;">WHAT DO YOU WANT TO DO TODAY?</h2>
 					
 					<form action="{% url 'todo:add' %}" method="POST" role="form">
@@ -72,12 +73,14 @@
 						<div class="col-lg-12">
 							<div class="btn-toolbar">
 								<div class="btn-group">
-									<a href="{% url 'todo:deletecomplete' %}"><button type="button" class="btn btn-warning">
+									<a href="{% url 'todo:deletecomplete' %}">
+										<button type="button" class="btn btn-warning" style="padding: 10px 18px; margin-right: auto;">
 										<i class="glyphicon glyphicon-trash"></i> DELETE COMPLETED
 									</button></a>
 								</div>
 								<div class="btn-group">
-									<a href="{% url 'todo:deleteall' %}"><button type="button" class="btn btn-warning">
+									<a href="{% url 'todo:deleteall' %}">
+										<button type="button" class="btn btn-warning" style="padding: 10px 50px; margin-left: auto;">
 										<i class="glyphicon glyphicon-trash"></i> DELETE ALL
 									</button></a>
 								</div>
@@ -95,6 +98,6 @@
 						{% endfor %}
 					</ul>
 				</div>
-				<!-- </div> -->
+				</div>
 	</body>
 </html>
