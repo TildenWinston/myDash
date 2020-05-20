@@ -12,7 +12,7 @@ MyDash was created by @TildenWinston, @Don-Joel, @cfrymire98, and @simonmli for 
 * API keys and other secrets have been properly removed and replaced
 * /Todo/ was updated to match styling of weather
 
-Other issues have also been fixed, but more still exist
+Other issues have also been fixed, but more, such as inconsistant styling with the calendar and GPA modules, still exist.
 
 
 # Architecture
