@@ -14,7 +14,7 @@ if 'TRAVIS' in os.environ:
     # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
+    SECRET_KEY = os.environ("SECRET_KEY") # 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -102,16 +102,9 @@ if 'TRAVIS' in os.environ:
     # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
     if os.environ.get('IS_HEROKU') == True:
-        DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd3pa1qv3s19ic0',                      
-            'USER': 'yvgyinccncuxeo',
-            'PASSWORD': '1e45a7c303706e5f8288885a97d4dc44d09ae8494724baf2142d30decb5821c7',
-            'HOST': 'ec2-50-17-178-87.compute-1.amazonaws.com',
-            'PORT': '5432',
-        }
-    }
+        import dj_database_url
+        DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
     else:
         DATABASES = {
             'default': {
@@ -261,7 +254,6 @@ else:
                 ],
             },
         },
-        
     ]
 
     WSGI_APPLICATION = 'dashboard.wsgi.application'
@@ -315,13 +307,7 @@ else:
 
     USE_TZ = True
 
-    #Facebook API LOGIN OATH
-    SOCIAL_AUTH_FACEBOOK_KEY = '259905795014698'      # App ID
-    SOCIAL_AUTH_FACEBOOK_SECRET = '2c511f8bf96aa396f45a16b3c0823467' # App Secret
-
-    #Twitter API Login Oath
-    SOCIAL_AUTH_TWITTER_KEY = 'URi9HvMcXFx5kyhUOHKZIaEaX'
-    SOCIAL_AUTH_TWITTER_SECRET = 'v70G2LuSYT7092V4ZS9Uu6iaTZB9RXRLfSFsC9Hf2FS99VG2Y8'
+   
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
