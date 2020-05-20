@@ -14,7 +14,7 @@ if 'TRAVIS' in os.environ:
     # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = os.environ("SECRET_KEY") # 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
+    SECRET_KEY = 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -176,7 +176,7 @@ else:
     # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
+    # Moved to DB section
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -263,10 +263,12 @@ else:
     # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
     if os.environ.get('IS_HEROKU') == True:
+        SECRET_KEY = os.environ["SECRET_KEY"] 
         import dj_database_url
         DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
     
     else:
+        SECRET_KEY = 'xy4(+@z$0sea7g=i#%w+^u5c3dlk2m7!e3h0dm5nj!=y!tpsio'
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
